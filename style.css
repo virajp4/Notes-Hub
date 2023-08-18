@@ -218,22 +218,43 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10rem 0;
+    width: 100%;
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position-x: center;
+}
+
+.stonk {
+    opacity: 100;
+    position: fixed;
+    bottom: 0;
+    right: 10%;
+}
+
+.fine {
+    opacity: 100;
+    position: fixed;
+    bottom: 0;
+    left: 10%;
 }
 
 .cards {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .card {
-    background-color: black;
+    background-color: rgb(41, 41, 41);
     color: white;
     width: 230px;
     height: 350px;
     border-radius: 11px;
-    border: 2px solid #f77f00;
+    border: 2px solid #03ce1edf;
+    transition: all 0.35s ease-in-out;
 }
 
 @media screen and (max-width: 1020px) {
@@ -265,32 +286,47 @@ body::-webkit-scrollbar {
 .card1 {
     transform: translate(15rem, -1.5rem) rotate(-6deg);
     z-index: 1;
-    transition: all 0.35s ease-in-out;
 }
 
 .card2 {
     transform: translate(0px, -1rem) rotate(-3deg);
     z-index: 3;
-    transition: all 0.35s ease-in-out;
 }
 
 .card3 {
     transform: translate(-15rem, 0rem) rotate(2deg);
     z-index: 2;
-    transition: all 0.35s ease-in-out;
 }
 
-.tiles:hover .card1 {
-    transform: translate(1rem, 0) rotate(-10deg);
+.cards:hover .card1 {
+    transform: translate(-0.4rem, 0) rotate(-10deg);
     z-index: 2;
 }
 
-.tiles:hover .card2 {
+.cards:hover .card2 {
     transform: translate(0, 0) rotate(0deg);
     z-index: 4;
 }
 
-.tiles:hover .card3 {
-    transform: translate(-1rem, 0) rotate(10deg);
+.cards:hover .card3 {
+    transform: translate(0.3rem, 0) rotate(10deg);
+    z-index: 3;
+}
+
+.cards:hover .card:hover {
+    box-shadow: 0 0 50px rgb(44, 243, 71);
+}
+
+.cards:hover .card1:hover {
+    transform: translate(-1rem, 1rem) rotate(-5deg);
+    z-index: 4;
+}
+
+.cards:hover .card2:hover {
+    transform: translate(0, 1rem) rotate(0deg);
+}
+
+.cards:hover .card3:hover {
+    transform: translate(1rem, 1rem) rotate(5deg);
     z-index: 3;
 }
