@@ -139,6 +139,10 @@ table {
     --card-color: rgb(23, 23, 23);
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 body {
     background-color: black;
     font-family: 'Roboto', sans-serif;
@@ -220,7 +224,7 @@ body::-webkit-scrollbar {
     align-items: center;
     width: 100%;
     padding-top: 10rem;
-    padding-bottom: 5rem;
+    padding-bottom: 7rem;
     background-repeat: no-repeat;
     background-size: 90%;
     background-position-x: center;
@@ -251,10 +255,14 @@ body::-webkit-scrollbar {
     background-color: rgb(41, 41, 41);
     color: white;
     width: 230px;
-    height: 350px;
+    height: 400px;
     border-radius: 11px;
     border: 2px solid #03ce1edf;
     transition: all 0.35s ease-in-out;
+}
+
+.card-title {
+    font-weight: bolder;
 }
 
 @media screen and (max-width: 1020px) {

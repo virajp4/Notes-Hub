@@ -26,18 +26,3 @@ document.addEventListener('scroll', () => {
     frontpage.style.opacity = fopacity;
     frontpage.style.transform = `translateY(${window.scrollY/4}px)`;
 });
-
-card1.addEventListener('mouseover', () => {
-    document.body.style.backgroundImage = "url('img/heckerbg.gif')";
-});
-
-card1.addEventListener('mouseout', () => {
-    document.body.style.backgroundImage = "none";
-});
-
-card2.addEventListener('mouseover', () => {
-});
-
-card2.addEventListener('mouseout', () => {
-    tiles.style.backgroundImage = "none";
-});
