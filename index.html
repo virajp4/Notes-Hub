@@ -1,74 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes Hub</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="frontpage">
-        <div class="heading">
-            <span class="head text1">Notes</span>
-            <span class="head text2">Hub</span>
-        </div>
-
-        <div class="arrow">
-            <i class="fa-solid fa-arrow-down-long fa-bounce fa-2xl" style="color: rgb(200, 135, 80);"></i>
-        </div>
-    </div>
-
-    <div class="tiles">
-        <!--
-        <img class="stonk" src="img/stonk.png" alt="stonks" height="500rem">
-        <img class="fine" src="img/fine.png" alt="fine">
-        <img class="drake" src="img/drake.png" alt="cat">-->
-        <div class="card-deck cards text-center">
-            <div class="card card1">
-                <img class="card-img-top" src="img/heck.gif" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">E-Lab Answers</h5>
-                    <p class="card-text mb-2">Full marks in CT Practicals.</p>
-                    <button class="btn btn-primary cardbtn mt-1 py-1">
-                        <a href="" target="_blank" style="color: white;">Answers</a>
-                    </button>
-                </div>
-            </div>
-            <div class="card card2">
-                <img class="card-img-top" src="img/notes.gif" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Subject Notes</h5>
-                    <p class="card-text mb-2">Exam tomorrow? We got you covered.</p>
-                    <button class="btn btn-primary cardbtn mt-1 py-1">
-                        <a href="" target="_blank" style="color: white;">Notes</a>
-                    </button>
-                </div>
-            </div>
-            <div class="card card3">
-                <img class="card-img-top" src="img/calc.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">GPA Calculator</h5>
-                    <p class="card-text mb-2">You're going to pass, surely.</p>
-                    <button class="btn btn-primary cardbtn mt-1 py-1">
-                        <a href="https://virajp4.me/GPA-Hub/" target="_blank" style="color: white;">Calculate</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/f31009ec0d.js" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
-</body>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
