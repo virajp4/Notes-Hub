@@ -3,8 +3,6 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import Button from "react-bootstrap/Button";
-
 import "./Landing.css";
 
 export default function Landing() {
@@ -13,36 +11,23 @@ export default function Landing() {
   }, []);
 
   return (
-    <div id="landing">
-      <div className="landing-content">
-        <div
-          className="landing-title mb-1"
-          data-aos="fade"
-          data-aos-duration="1000"
+    <div id="landing" className="h-screen bg-black flex justify-center algin-center flex-col">
+      <div className="landing-title mb-1 w-screen flex justify-center align-center text-[3.3rem] md:text-[5.4rem]" data-aos="fade" data-aos-duration="1000">
+        <span class="head1 d-block text-white pr-[3px]">Notes</span>
+        <span class="head2 d-block bg-orange-500 rounded-lg text-black font-bold px-[2px]">Hub</span>
+      </div>
+      <div className="grid justify-items-center text-center">
+        <p className="mb-4 text-white tracking-widest text-center text-[1.35rem] mt-2" data-aos="fade" data-aos-delay="1000" data-aos-duration="500">
+          Exams tomorrow? We've got you covered.
+        </p>
+        <button
+          className="landing-button w-[12rem] text-lg text-white border-2 border-white rounded-3xl hover:border-orange-500  active:border-orange-700 py-2 mt-2"
+          type="button"
+          data-aos="fade-up"
+          data-aos-delay="2000"
         >
-          <span class="head1">Notes</span>
-          <span class="head2">Hub</span>
-        </div>
-        <div className="d-flex flex-col justify-content-center align-items-center">
-          <p
-            className="mb-5 text-center"
-            data-aos="fade"
-            data-aos-delay="1000"
-            data-aos-duration="500"
-          >
-            Exams tomorrow? We've got you covered.
-          </p>
-          <Button
-            className="landing-button"
-            variant="dark"
-            size="lg"
-            href="/home"
-            data-aos="fade-up"
-            data-aos-delay="2000"
-          >
-            🎯 Take me in 🚀
-          </Button>
-        </div>
+          <a href="/home">🎯 Take me in 🚀</a>
+        </button>
       </div>
     </div>
   );
