@@ -27,10 +27,6 @@ const secondYearData = [
         title: "Computer Organization and Architecture",
         href: "/computer-organization-and-architecture",
     },
-    {
-        title: "Theory of Computation",
-        href: "/theory-of-computation",
-    },
 ];
 
 export default secondYearData;
