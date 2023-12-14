@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Subject({ title, href, id }) {
+export default function Subject({ title, href, id, handleOnDelete }) {
   return (
     <button
       type="button"
@@ -10,6 +10,7 @@ export default function Subject({ title, href, id }) {
       <a href={href} target="_blank">
         {title}
       </a>
+      <i className="fa-solid fa-xmark pl-3" onClick={handleOnDelete}></i>
     </button>
   );
 }

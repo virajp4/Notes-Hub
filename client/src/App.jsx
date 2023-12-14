@@ -4,6 +4,7 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import Home from "./components/Home/Home";
 import Codes from "./components/Codes/Codes";
 import Notes from "./components/Notes/Notes";
+import AddNotes from "./components/Notes/AddNotes";
 
 import "./App.css";
 import NotesProvider from "./contexts/notes-context";
@@ -14,6 +15,8 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/codes" element={<Codes />} />
       <Route path="/notes" element={<Notes />} />
+      <Route path="/notes/add" element={<AddNotes />} />
+      <Route path="*" element={<h1>Not Found</h1>} />
     </Route>
   )
 );
