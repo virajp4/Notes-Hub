@@ -1,7 +1,7 @@
 import NavBar from "../../partials/NavBar/NavBar";
-import Heading from "../../partials/Heading";
-import ButtonGroup from "../../partials/ButtonGroup";
-import Note from "./Note";
+import Heading from "../../partials/Content/Heading";
+import ButtonGroup from "../../partials/Content/ButtonGroup";
+import DisplaySubjects from "../../partials/Content/DisplaySubjects";
 
 export default function Notes() {
   return (
@@ -16,7 +16,7 @@ export default function Notes() {
         </div>
         <div className="notes-content mt-16 w-[100%]">
           <div className="notes-grid">
-            <Note />
+            <DisplaySubjects category="N" />
           </div>
         </div>
       </div>

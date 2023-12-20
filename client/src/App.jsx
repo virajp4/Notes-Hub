@@ -6,7 +6,6 @@ import Codes from "./components/Codes/Codes";
 import Notes from "./components/Notes/Notes";
 import AddNotes from "./components/Notes/AddNotes";
 
-import "./App.css";
 import NotesProvider from "./contexts/notes-context";
 
 const router = createBrowserRouter(

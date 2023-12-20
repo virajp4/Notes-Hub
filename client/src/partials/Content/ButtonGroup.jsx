@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { NotesContext } from "../contexts/notes-context";
+import { NotesContext } from "../../contexts/notes-context";
 
 export default function ButtonGroup({ totalYears }) {
   const yearOne = `px-4 py-2 text-sm text-white border border-blue-600 rounded-s-lg hover:bg-blue-600 focus:z-10 focus:text-white focus:bg-blue-700 bg-transparent`;

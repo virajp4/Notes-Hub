@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { NotesContext } from "../../contexts/notes-context";
-
 import NavBar from "../../partials/NavBar/NavBar";
-import Heading from "../../partials/Heading";
-import ButtonGroup from "../../partials/ButtonGroup";
+import Heading from "../../partials/Content/Heading";
+import ButtonGroup from "../../partials/Content/ButtonGroup";
+import DisplaySubjects from "../../partials/Content/DisplaySubjects";
 
 export default function Codes() {
   return (
@@ -17,7 +15,9 @@ export default function Codes() {
           </div>
         </div>
         <div className="codes-content mt-16 w-[100%]">
-          <div className="codes-grid"></div>
+          <div className="codes-grid">
+            <DisplaySubjects category="E" />
+          </div>
         </div>
       </div>
     </div>

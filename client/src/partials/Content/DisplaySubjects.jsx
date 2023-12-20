@@ -4,14 +4,14 @@ import axios from "axios";
 import { NotesContext } from "../../contexts/notes-context";
 import Subject from "./Subject";
 
-export default function Note() {
+export default function DisplaySubjects({ category }) {
   const { year } = useContext(NotesContext);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/notes");
+        const response = await axios.get("http://localhost:4000/subjects?year=" + year);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -22,11 +22,19 @@ export default function Note() {
   }, [year]);
 
   const handleDelete = (subject) => {
-    axios.delete(`http://localhost:4000/notes/${subject._id}`).then((res) => {
+    axios.delete(`http://localhost:4000/subjects/${subject._id}`).then((res) => {
       console.log("Subject deleted successfully");
       setData(res.data);
     });
   };
+
+  function isValidSUbject(subject) {
+    return year === subject.year && subject.category === category;
+  }
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
   return (
     year > 0 && (
@@ -34,7 +42,12 @@ export default function Note() {
         <h1 className="text-5xl font-extrabold dark:text-white">Year {year}</h1>
         <div className="text-2xl w-[85%] md:w-[60%] mx-auto my-5">
           {data &&
-            data.map((subject, index) => year === subject.year && <Subject key={index} title={subject.title} href={subject.link} id={index} handleOnDelete={() => handleDelete(subject)}/>)}
+            data.map(
+              (subject, index) =>
+                isValidSUbject(subject) && (
+                  <Subject key={subject._id} title={subject.title} href={subject.link} id={subject._id} handleOnDelete={() => handleDelete(subject)} />
+                )
+            )}
         </div>
       </div>
     )
