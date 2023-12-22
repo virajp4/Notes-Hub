@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { NotesContext } from "./contexts/notes-context";
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate } from "react-router-dom";
+import { Route, createHashRouter, createRoutesFromElements, RouterProvider, Navigate } from "react-router-dom";
 
 import Home from "./components/Home/Home";
 import Codes from "./components/Codes/Codes";
@@ -12,7 +12,7 @@ import Admin from "./components/Admin/Admin";
 import NotesProvider from "./contexts/notes-context";
 
 function App() {
-  const router = createBrowserRouter(
+  const router = createHashRouter(
     createRoutesFromElements(
       <Route>
         <Route path="/" element={<Home />} />
