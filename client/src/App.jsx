@@ -1,26 +1,30 @@
 import React from "react";
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
+import { useContext } from "react";
+import { NotesContext } from "./contexts/notes-context";
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate } from "react-router-dom";
 
 import Home from "./components/Home/Home";
 import Codes from "./components/Codes/Codes";
 import Notes from "./components/Notes/Notes";
-import AddNotes from "./components/Notes/AddNotes";
+import AdminLogin from "./components/Admin/AdminLogin";
+import Admin from "./components/Admin/Admin";
 
 import NotesProvider from "./contexts/notes-context";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route>
-      <Route path="/" element={<Home />} />
-      <Route path="/codes" element={<Codes />} />
-      <Route path="/notes" element={<Notes />} />
-      <Route path="/notes/add" element={<AddNotes />} />
-      <Route path="*" element={<h1>Not Found</h1>} />
-    </Route>
-  )
-);
+function App() {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/codes" element={<Codes />} />
+        <Route path="/notes" element={<Notes />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="*" element={<h1>Not Found</h1>} />
+      </Route>
+    )
+  );
 
-function App({ routes }) {
   return (
     <NotesProvider>
       <RouterProvider router={router} />

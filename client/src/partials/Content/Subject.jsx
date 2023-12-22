@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { NotesContext } from "../../contexts/notes-context";
 
-export default function Subject({ title, href, id, handleOnDelete }) {
+export default function Subject({ title, href, id, handleOnDelete, handleOnEdit }) {
+  const { isAdmin } = useContext(NotesContext);
+
   return (
     <button
       type="button"
@@ -10,7 +13,7 @@ export default function Subject({ title, href, id, handleOnDelete }) {
       <a href={href} target="_blank">
         {title}
       </a>
-      <i className="fa-solid fa-xmark pl-3" onClick={handleOnDelete}></i>
+      {isAdmin && <i className="fa-solid fa-xmark pl-3" onClick={handleOnDelete}></i>}
     </button>
   );
 }

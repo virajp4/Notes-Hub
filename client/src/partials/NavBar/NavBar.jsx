@@ -9,6 +9,7 @@ const navigation = [
   { name: "Notes", href: "/notes", current: false },
   { name: "E-Lab Solutions", href: "/codes", current: false },
   { name: "GPA-Calculator", href: "https://virajp4.me/GPA-Wiz/", current: false, target: "_blank" },
+  { name: "Admin", href: "/admin", current: false },
 ];
 
 function classNames(...classes) {
@@ -55,7 +56,7 @@ export default function NavBar({ active }) {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
+              {navigation.map((item, idx) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"

@@ -2,15 +2,28 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import Subject from "./models/Subject.mjs";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb://127.0.0.1:27017/subjectsDB");
+mongoose.connect(process.env.MONGODB_URL).catch((error) => {
+  console.log("err");
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", async () => {
+  console.log("Database connected");
+  // addSubjects();
+  // deleteSubjects();
+});
 
 function addSubjects() {
   data.forEach(async (subject) => {
@@ -23,7 +36,7 @@ function addSubjects() {
 }
 
 function deleteSubjects(yr) {
-  Subject.deleteMany({year: yr})
+  Subject.deleteMany({ year: yr })
     .then(() => {
       console.log("Deleted all subjects of year", yr);
     })
@@ -32,17 +45,9 @@ function deleteSubjects(yr) {
     });
 }
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "Connection error:"));
-db.once("open", async () => {
-  console.log("Database connected");
-  // addSubjects();
-  // deleteSubjects();
-});
-
 app.get("/subjects", async (req, res) => {
   const yr = req.query.year;
-  Subject.find({year: yr})
+  Subject.find({ year: yr })
     .then((results) => {
       res.status(200).json(results);
     })

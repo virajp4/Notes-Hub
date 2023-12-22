@@ -8,11 +8,16 @@ export default function DisplaySubjects({ category }) {
   const { year } = useContext(NotesContext);
   const [data, setData] = useState([]);
 
+  const serverAPI = import.meta.env.VITE_SERVERAPI;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/subjects?year=" + year);
-        setData(response.data);
+        const response = await axios.get(`${serverAPI}/subjects?year=${year}`);
+        const data = response.data;
+        // console.log(data);
+        // const sortedData = sortSubjectData(data);
+        setData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -22,18 +27,25 @@ export default function DisplaySubjects({ category }) {
   }, [year]);
 
   const handleDelete = (subject) => {
-    axios.delete(`http://localhost:4000/subjects/${subject._id}`).then((res) => {
+    axios.delete(`/subjects/${subject._id}`).then((res) => {
       console.log("Subject deleted successfully");
       setData(res.data);
     });
   };
 
   function isValidSUbject(subject) {
+    if (category === "A") return subject.year === year;
     return year === subject.year && subject.category === category;
   }
 
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+  function sortSubjectData(data) {
+    const sortedData = data
+    sortedData.sort((a, b) => {
+      if (a.title < b.title) return -1;
+      return 1;
+    });
+
+    return sortedData;
   }
 
   return (
