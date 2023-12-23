@@ -3,13 +3,12 @@ import { useContext } from "react";
 import { NotesContext } from "../../contexts/notes-context";
 
 export default function ButtonGroup({ totalYears }) {
-  const yearOne = `px-4 py-2 text-sm text-white border border-blue-600 rounded-s-lg hover:bg-blue-600 focus:z-10 focus:text-white focus:bg-blue-700 bg-transparent`;
 
-  const yearTwo = `px-4 py-2 text-sm text-white border-t border-b border-blue-600 hover:bg-blue-600 focus:z-10 focus:text-white focus:bg-blue-700 g-transparent`;
-
-  const yearThree = `px-4 py-2 text-sm text-white border-t border-b border-l border-blue-600 hover:bg-blue-600 focus:z-10 focus:text-white focus:bg-blue-700 g-transparent`;
-
-  const yearFour = `px-4 py-2 text-sm text-white border border-blue-600 rounded-e-lg hover:bg-blue-600 focus:z-10 focus:text-white focus:bg-blue-700 bg-transparent`;
+  const buttonClass = `px-4 py-2 text-sm text-white border-blue-600 hover:bg-blue-600 focus:z-10 focus:text-white focus:bg-blue-700 bg-transparent`;
+  const yearOne = `border rounded-s-lg ${buttonClass}`;
+  const yearTwo = `border-t border-b ${buttonClass}`;
+  const yearThree = `border-t border-b border-l ${buttonClass}`;
+  const yearFour = `border rounded-e-lg ${buttonClass}`;
 
   const { setYear } = useContext(NotesContext);
 

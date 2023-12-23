@@ -5,7 +5,7 @@ import { NotesContext } from "../../contexts/notes-context";
 import Subject from "./Subject";
 
 export default function DisplaySubjects({ category }) {
-  const { year } = useContext(NotesContext);
+  const { year, loading, setLoading } = useContext(NotesContext);
   const [data, setData] = useState([]);
 
   const serverAPI = import.meta.env.VITE_SERVERAPI;
@@ -17,27 +17,29 @@ export default function DisplaySubjects({ category }) {
       try {
         const response = await axios.get(`${serverAPI}/subjects?year=${year}`);
         const data = response.data;
-        // console.log(data);
-        // const sortedData = sortSubjectData(data);
-        setData(data);
+        const sortedData = sortSubjectData(data);
+        setData(sortedData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
+      setLoading(false);
     };
-
+    
     fetchData();
   }, [year]);
 
   const handleDelete = (subject) => {
-    axios.delete(`/subjects/${subject._id}`, {
-      params: {
-        username: adminUsername,
-        password: adminPassword,
-      }
-    }).then((res) => {
-      console.log("Subject deleted successfully");
-      setData(res.data);
-    });
+    axios
+      .delete(`${serverAPI}/subjects/${subject._id}`, {
+        params: {
+          username: adminUsername,
+          password: adminPassword,
+        },
+      })
+      .then((res) => {
+        console.log("Subject deleted successfully");
+        setData(res.data);
+      });
   };
 
   function isValidSUbject(subject) {
@@ -46,7 +48,7 @@ export default function DisplaySubjects({ category }) {
   }
 
   function sortSubjectData(data) {
-    const sortedData = data
+    const sortedData = data;
     sortedData.sort((a, b) => {
       if (a.title < b.title) return -1;
       return 1;
@@ -60,14 +62,22 @@ export default function DisplaySubjects({ category }) {
       <div className="text-white text-center pb-16 w-full flex flex-col items-center mt-16">
         <h1 className="text-5xl font-extrabold dark:text-white">Year {year}</h1>
         <div className="text-2xl w-[85%] md:w-[60%] mx-auto my-5">
-          {data &&
+          { !loading ? (
             data.map(
               (subject, index) =>
                 isValidSUbject(subject) && (
-                  <Subject key={subject._id} title={subject.title} href={subject.link} id={subject._id} handleOnDelete={() => handleDelete(subject)} />
+                  <Subject
+                    key={subject._id}
+                    title={subject.title}
+                    href={subject.link}
+                    id={subject._id}
+                    handleOnDelete={() => handleDelete(subject)}
+                  />
                 )
-            )}
-          {!data && <i class="fa-solid fa-spinner fa-spin"></i>}
+            )
+          ) : (
+              <i className="fa-solid fa-spinner fa-spin text-white"> </i>
+          )}
         </div>
       </div>
     )

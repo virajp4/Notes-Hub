@@ -8,6 +8,8 @@ export const NotesContext = createContext({
   setYear: () => {},
   isAdmin: false,
   handleLogin: () => {},
+  loading: true,
+  setLoading: () => {},
 });
 
 function yearReducer(state, action) {
@@ -16,11 +18,17 @@ function yearReducer(state, action) {
       return {
         ...state,
         year: action.payload.year,
+        loading: true,
       };
     case "LOGIN":
       return {
         ...state,
         isAdmin: action.payload.username === ADMIN_USER && action.payload.password === ADMIN_PASS,
+      };
+    case "SET_LOADING":
+      return {
+        ...state,
+        loading: action.payload.loading,
       };
     default:
       return state;
@@ -51,11 +59,22 @@ export default function NotesProvider({ children }) {
     });
   }
 
+  function setLoading(loading) {
+    yearDispatch({
+      type: "SET_LOADING",
+      payload: {
+        loading,
+      },
+    });
+  }
+
   const ctxValue = {
     year: yearState.year,
     setYear: handleSetYear,
     isAdmin: yearState.isAdmin,
     handleLogin: handleLogin,
+    loading: yearState.loading,
+    setLoading: setLoading,
   };
 
   return <NotesContext.Provider value={ctxValue}>{children}</NotesContext.Provider>;

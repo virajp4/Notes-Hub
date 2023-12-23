@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { NotesContext } from "../../contexts/notes-context";
 import { Navigate } from "react-router-dom";
 
+import NavBar from "../../partials/NavBar/NavBar";
+
 export default function AdminLogin() {
   const { isAdmin, handleLogin } = useContext(NotesContext);
 
@@ -33,6 +35,7 @@ export default function AdminLogin() {
   
   return (
     <div className="min-h-screen h-fill bg-black scroll-smooth">
+      <NavBar active="Admin" />
       <div className="text-white h-screen w-screen flex justify-center items-center">
         <div className="heading flex flex-col justify-center items-center text-center">
           <h1 className="mb-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">

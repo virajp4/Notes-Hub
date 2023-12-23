@@ -29,6 +29,14 @@ export default function ExtraLargeView() {
         <ParallaxLayer offset={0.72} speed={0.1} factor={2}>
           <img src={AstroIMG} style={{ scale: "1.5" }} />
         </ParallaxLayer>
+        <ParallaxLayer offset={0.9} speed={1} factor={2}>
+          <div className="text-center fa-bounce text-white flex justify-center items-center ">
+            <div className="rounded-full border-white shadow-[0_0_100px_rgba(255,255,255,1)] w-fit border-2 p-2">
+            <div className="">Scroll</div>
+            <i className="fa-solid fa-arrow-down"></i>
+            </div>
+          </div>
+        </ParallaxLayer>
         <ParallaxLayer offset={0.3} speed={2} factor={1} className="flex justify-center">
           <h1 className="text-6xl md:text-8xl text-white font-bold cursor-default">Notes Hub</h1>
         </ParallaxLayer>
