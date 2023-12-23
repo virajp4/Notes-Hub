@@ -9,6 +9,8 @@ export default function DisplaySubjects({ category }) {
   const [data, setData] = useState([]);
 
   const serverAPI = import.meta.env.VITE_SERVERAPI;
+  const adminUsername = import.meta.env.VITE_ADMIN_USERNAME;
+  const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +29,12 @@ export default function DisplaySubjects({ category }) {
   }, [year]);
 
   const handleDelete = (subject) => {
-    axios.delete(`/subjects/${subject._id}`).then((res) => {
+    axios.delete(`/subjects/${subject._id}`, {
+      params: {
+        username: adminUsername,
+        password: adminPassword,
+      }
+    }).then((res) => {
       console.log("Subject deleted successfully");
       setData(res.data);
     });
@@ -60,6 +67,7 @@ export default function DisplaySubjects({ category }) {
                   <Subject key={subject._id} title={subject.title} href={subject.link} id={subject._id} handleOnDelete={() => handleDelete(subject)} />
                 )
             )}
+          {!data && <i class="fa-solid fa-spinner fa-spin"></i>}
         </div>
       </div>
     )

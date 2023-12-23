@@ -11,6 +11,8 @@ import DisplaySubjects from "../../partials/Content/DisplaySubjects";
 export default function Admin() {
   const { isAdmin } = useContext(NotesContext);
   const serverAPI = import.meta.env.VITE_SERVERAPI;
+  const adminUsername = import.meta.env.VITE_ADMIN_USERNAME;
+  const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
 
   const [formData, setFormData] = useState({
     title: "",
@@ -28,7 +30,12 @@ export default function Admin() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    axios.post(`${serverAPI}/subjects/add`, formData).then((res) => {
+    axios.post(`${serverAPI}/subjects/add`, formData, {
+      params : {
+        username: adminUsername,
+        password: adminPassword,
+      }
+    }).then((res) => {
       console.log("Subject added successfully");
     });
 
