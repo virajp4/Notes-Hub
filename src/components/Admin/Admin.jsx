@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import axios from "axios";
@@ -28,15 +29,36 @@ export default function Admin() {
     }));
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    axios.post(`${serverAPI}/subjects/add`, formData, {
+    await toast.promise (axios.post(`${serverAPI}/subjects/add`, formData, {
       params : {
         username: adminUsername,
         password: adminPassword,
       }
-    }).then((res) => {
-      console.log("Subject added successfully");
+    }), {
+      pending: {
+        render() {
+          return "Adding subject...";
+        },
+        position: "top-right",
+        theme: "dark",
+        className: "font-bebas text-xl tracking-wider",
+      },
+      success: {
+        render() {
+          return "Subject added.";
+        },
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+        className: "font-bebas text-xl tracking-wider",
+      },
+      error: "Error adding subject.",
     });
 
     setFormData((prev) => ({

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 import { NotesContext } from "../../contexts/notes-context";
 import { Navigate } from "react-router-dom";
 
@@ -30,9 +31,10 @@ export default function AdminLogin() {
   };
 
   if (isAdmin) {
+    toast.success("Logged in successfully.");
     return <Navigate to="/admin" />;
   }
-  
+
   return (
     <div className="min-h-screen h-fill bg-black scroll-smooth">
       <NavBar active="Admin" />

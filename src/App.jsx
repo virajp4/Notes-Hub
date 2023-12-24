@@ -1,6 +1,6 @@
 import React from "react";
-import { useContext } from "react";
-import { NotesContext } from "./contexts/notes-context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate } from "react-router-dom";
 
 import Home from "./components/Home/Home";
@@ -8,6 +8,7 @@ import Codes from "./components/Codes/Codes";
 import Notes from "./components/Notes/Notes";
 import AdminLogin from "./components/Admin/AdminLogin";
 import Admin from "./components/Admin/Admin";
+import './App.css';
 
 import NotesProvider from "./contexts/notes-context";
 
@@ -27,6 +28,18 @@ function App() {
 
   return (
     <NotesProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <RouterProvider router={router} />
     </NotesProvider>
   );
